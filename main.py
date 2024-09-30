@@ -19,7 +19,7 @@ tamano_empresa = st.sidebar.multiselect('Seleccionar Tamaño de Empresa', option
 
 st.sidebar.header("Caracteristicas")
 
-opciones = ['Id Compañia', 'Industria', 'País', 'Tamaño']
+opciones = ['Industria', 'País', 'Tamaño']
 seleccion = st.sidebar.selectbox("Selecciona el desgloce de las gráficas:", opciones)
 
 if seleccion == 'Id Compañia':
