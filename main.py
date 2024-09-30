@@ -267,7 +267,7 @@ st.markdown(df_stats2.to_html(), unsafe_allow_html=True)
 
 st.write("--------------------------------------------")
 
-st.markdown("<h3 style='text-align: center; color: white; font-size: 26px; font-weight: bold;'>Asistente Virtual &#129302</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; color: white; font-size: 26px; font-weight: bold;'> &#129302 Asistente Virtual &#129302</h3>", unsafe_allow_html=True)
 
 openai_api_key = st.secrets["openai_api_key"]
 client = openai.OpenAI(api_key=openai_api_key)
