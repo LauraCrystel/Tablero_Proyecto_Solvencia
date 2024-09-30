@@ -5,6 +5,7 @@ import openai
 #st.title("Dashboard de Solvencia Financiera")
 
 st.markdown("<h1 style='text-align: center; color: white;'>Dashboard de Solvencia Financiera </h1>", unsafe_allow_html=True)
+st.write("Creado por: **Laura Crystel Carreño Olivera** :ghost:") 
 
 st.sidebar.header("Filtros")
 
@@ -266,6 +267,8 @@ st.markdown(df_stats2.to_html(), unsafe_allow_html=True)
 
 st.write("--------------------------------------------")
 
+st.markdown("<h3 style='text-align: center; color: white; font-size: 26px; font-weight: bold;'>Asistente Virtual:robot_face:</h3>", unsafe_allow_html=True)
+
 openai_api_key = st.secrets["openai_api_key"]
 client = openai.OpenAI(api_key=openai_api_key)
 
@@ -293,9 +296,14 @@ output_modelo = obtener_respuesta(prompt_user)
 st.write(output_modelo)
 
 #Mostrar los filtros
+
+st.write('')
+st.write('')
+st.write('')
+
+st.markdown("<h3 style='text-align: center; color: white; font-size: 26px; font-weight: bold;'>Filtros Aplicados</h3>", unsafe_allow_html=True)
+
 st.write('Los datos contienen información de estas selecciones:')
 st.write('Industrias: ' + ', '.join(industria))
 st.write('Paises: ' + ', '.join(pais))
 st.write('Tamaños: ' + ', '.join(tamano_empresa))
-
-st.write("Creado por: **Laura Crystel Carreño Olivera** :ghost:") 
