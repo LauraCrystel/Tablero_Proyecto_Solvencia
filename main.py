@@ -266,6 +266,7 @@ st.markdown(df_stats2.to_html(), unsafe_allow_html=True)
 
 st.write("--------------------------------------------")
 
+openai_api_key = st.secrets["openai_api_key"]
 client = openai.OpenAI(api_key=openai_api_key)
 
 def obtener_respuesta(prompt):
