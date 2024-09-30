@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-
+import openai
 #st.title("Dashboard de Solvencia Financiera")
 
 st.markdown("<h1 style='text-align: center; color: white;'>Dashboard de Solvencia Financiera </h1>", unsafe_allow_html=True)
@@ -266,6 +266,31 @@ st.markdown(df_stats2.to_html(), unsafe_allow_html=True)
 
 st.write("--------------------------------------------")
 
+openai_api_key = st.secrets["OPENAI_API_KEY"]
+client = openai.OpenAI(api_key=openai_api_key)
+
+def obtener_respuesta(prompt):
+  response = client.chat.completions.create(
+      model="gpt-4o-mini",  # Ajusta el modelo según lo que necesites
+      messages=[
+          {"role": "system", "content": """
+          Eres experto en el área de solvencia,
+          entonces vas a responder todo desde la perspectiva financiera. Contesta siempre en español
+          en un máximo de 50 palabras, utiliza un lenguaje que sea entendible para todo público.
+          """}, #Solo podemos personalizar la parte de content
+          {"role": "user", "content": prompt}
+      ]
+  )
+  output = response.choices[0].message.content
+  return output
+
+prompt_user= st.text_area("Pregunta al asistente virtual: ")
+
+# Obtener la respuesta del modelo
+output_modelo = obtener_respuesta(prompt_user)
+
+# Mostrar la respuesta del modelo
+st.write(output_modelo)
 
 #Mostrar los filtros
 st.write('Los datos contienen información de estas selecciones:')
@@ -273,4 +298,4 @@ st.write('Industrias: ' + ', '.join(industria))
 st.write('Paises: ' + ', '.join(pais))
 st.write('Tamaños: ' + ', '.join(tamano_empresa))
 
-st.write("Creado por: **Laura Crystel Carreño Olivera** :sunglasses:") 
+st.write("Creado por: **Laura Crystel Carreño Olivera** :ghost:") 
