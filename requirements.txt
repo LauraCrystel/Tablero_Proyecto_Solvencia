@@ -40,3 +40,4 @@ urllib3==2.2.3
 watchdog==4.0.2
 altair==5.4.1
 attrs==24.2.0
+openair==1.47.1
